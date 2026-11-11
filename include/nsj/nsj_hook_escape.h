@@ -2,6 +2,7 @@
 #include "mj/mj_game.h"
 #include <bn_regular_bg_ptr.h>
 #include <bn_sprite_ptr.h>
+#include "nsj_player.h"
 
 
 namespace nsj
@@ -69,7 +70,9 @@ namespace nsj
          */
         void fade_out(const mj::game_data& data) override;
 
-
+         private:
+        // The character that the player can move
+        player _player;
 
     };
 }

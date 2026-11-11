@@ -19,7 +19,8 @@ MJ_GAME_LIST_ADD_SFX_CREDITS(sfx_credits)
 namespace nsj{
    
      nsj_hook_escape::nsj_hook_escape([[maybe_unused]]int completed_games,[[maybe_unused]] const mj::game_data& data):
-         mj::game("nsj")
+         mj::game("nsj"),
+         _player({0,0},2)
         {
 
         }
@@ -35,7 +36,7 @@ namespace nsj{
      mj::game_result nsj_hook_escape::play([[maybe_unused]] const mj::game_data& data){
 
     
-        //  _player.update();
+          _player.update();
 
         // Creates a game result indicating whether the game is finished and whether the title should be hidden early
         // For this game the game should end early if the player has won (if victory returns true)
