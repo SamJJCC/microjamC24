@@ -5,7 +5,7 @@
 #include <bn_sprite_animate_actions.h>
 
 
-// All game functions/classes/variables/constants scoped to the namespace
+//All game functions/classes/variables/constants scoped to the namespace
 namespace nsj {
 
 /**

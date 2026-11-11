@@ -16,7 +16,7 @@ namespace nsj {
  */
 player::player(bn::fixed_point starting_position, bn::fixed speed) :
     _sprite(bn::sprite_items::fish.create_sprite(starting_position)),
-    _sprite_action(bn::create_sprite_animate_action_forever(_sprite, 16, bn::sprite_items::nsj_fish.tiles_item(), 0, 1, 2, 3)),
+    _sprite_action(bn::create_sprite_animate_action_forever(_sprite, 16, bn::sprite_items::fish.tiles_item(), 0, 1, 2, 3)),
     _speed(speed)
     {}
 void player::update() {
