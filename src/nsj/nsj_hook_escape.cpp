@@ -46,7 +46,8 @@ namespace nsj{
      }
 
       bool nsj_hook_escape:: victory() const{
-        return false;
+        return _player.out_of_bounds();
+
       }
 
       void nsj_hook_escape:: fade_in([[maybe_unused]]const mj::game_data& data){
