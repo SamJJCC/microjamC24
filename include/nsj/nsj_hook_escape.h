@@ -1,5 +1,7 @@
 #pragma once
 #include "mj/mj_game.h"
+#include <bn_regular_bg_ptr.h>
+#include <bn_sprite_ptr.h>
 
 
 namespace nsj
