@@ -33,11 +33,11 @@ namespace nsj{
         return false;
       }
 
-      void nsj_hook_escape:: fade_in[[maybe_unused]](const mj::game_data& data){
+      void nsj_hook_escape:: fade_in([[maybe_unused]]const mj::game_data& data){
 
       }
 
-     void nsj_hook_escape:: fade_out([[maybe_unused]](const mj::game_data& data){
+     void nsj_hook_escape:: fade_out([[maybe_unused]]const mj::game_data& data){
 
     }
 
