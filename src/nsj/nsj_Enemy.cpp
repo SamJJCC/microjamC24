@@ -31,7 +31,7 @@ Enemy::Enemy(bn::fixed x_start, bn::fixed y_start, bn::fixed speed) : _sprite(bn
     if (_sprite.x() >= MAX_X)
     {
         _sprite.set_x(MIN_X);
-        _sprite.set_y(rng.get_int(-60, 40));
+        _sprite.set_y(rng.get_int(-61, 40));
     }
 
     else if (_sprite.x() <= MIN_X)
