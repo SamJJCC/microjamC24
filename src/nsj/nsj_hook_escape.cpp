@@ -37,13 +37,13 @@ namespace nsj
    {
       if (difficulty == mj::difficulty_level::EASY)
       {
-         return 1.5;
+         return .5;
       }
       else if (difficulty == mj::difficulty_level::NORMAL)
       {
-         return 2;
+         return 1;
       }
-      return 2.5;
+      return 1.5;
    }
 
    bn::fixed nsj_hook_escape::_recommended_shark_speed(mj::difficulty_level difficulty)
@@ -56,7 +56,7 @@ namespace nsj
       {
          return .75;
       }
-      return 1;
+      return .85;
    }
 
    int nsj_hook_escape::total_frames() const
