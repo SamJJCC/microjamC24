@@ -5,6 +5,7 @@
 #include <bn_rect.h>
 #include "bn_random.h"
 #include "nsj_player.h"
+#include "bn_sprite_animate_actions.h"
 namespace nsj
 {
   class Enemy
@@ -16,6 +17,7 @@ namespace nsj
 
   private:
     bn::sprite_ptr _sprite;
+    bn::sprite_animate_action<3> _sprite_action;
     bn::fixed _x_speed;
     bn::fixed _y_speed;
     bn::size _size;
