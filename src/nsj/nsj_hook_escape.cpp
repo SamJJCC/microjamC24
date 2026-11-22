@@ -38,26 +38,26 @@ namespace nsj
    {
       if (difficulty == mj::difficulty_level::EASY)
       {
-         return .5;
+         return .50;
       }
       else if (difficulty == mj::difficulty_level::NORMAL)
       {
-         return 1;
+         return .75;
       }
-      return 1.5;
+      return 1;
    }
 
    bn::fixed nsj_hook_escape::_recommended_shark_speed(mj::difficulty_level difficulty)
    {
       if (difficulty == mj::difficulty_level::EASY)
       {
-         return .5;
+         return .50;
       }
       else if (difficulty == mj::difficulty_level::NORMAL)
       {
          return .75;
       }
-      return .85;
+      return 1;
    }
 
    int nsj_hook_escape::total_frames() const
