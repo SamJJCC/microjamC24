@@ -25,7 +25,7 @@ namespace nsj
     bn::random &_rng;
 
   public:
-    Enemy(bn::fixed x_start, bn::fixed y_start, bn::fixed speed, bn::random &rng);
+    Enemy(bn::fixed x_start, bn::fixed y_start, bn::fixed x_speed, bn::fixed y_speed,bn::random &rng);
 
     void update();
     bn::rect get_bounding_box();
