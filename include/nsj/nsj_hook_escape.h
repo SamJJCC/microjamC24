@@ -72,12 +72,12 @@ namespace nsj
         // The character that the player can move
         player _player;
         static constexpr int MAX_ENEMIES = 2;
-        bn::vector<Enemy, MAX_ENEMIES> _enemies;
+        bn::vector<nsj::Enemy, MAX_ENEMIES> _enemies;
         bool _hooked = false;
         static constexpr int MAX_SHARKS = 2;
         bn::vector<Shark,MAX_SHARKS>_sharks;
-        //Shark _Shark;
         bn::fixed _recommended_hook_speed(mj::difficulty_level difficulty);
         bn::fixed _recommended_shark_speed(mj::difficulty_level difficulty);
+       
     };
 };

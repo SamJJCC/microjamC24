@@ -42,12 +42,13 @@ namespace nsj
    {
       return "Don't Get Caught";
    }
+   
 
    bn::fixed nsj_hook_escape::_recommended_hook_speed(mj::difficulty_level difficulty)
    {
       if (difficulty == mj::difficulty_level::EASY)
       {
-         return .50;
+         return .60;
       }
       else if (difficulty == mj::difficulty_level::NORMAL)
       {
@@ -62,7 +63,7 @@ namespace nsj
       {
          return .50;
       }
-      else if (difficulty == mj::difficulty_level::NORMAL)
+      if (difficulty == mj::difficulty_level::NORMAL)
       {
          return .75;
       }
@@ -76,6 +77,7 @@ namespace nsj
 
    mj::game_result nsj_hook_escape::play([[maybe_unused]] const mj::game_data &data)
    {
+      
       _player.update();
       for (int i = 0; i < _enemies.size(); i++)
       {
@@ -97,6 +99,9 @@ namespace nsj
          }
       }
 
+   
+
+ 
       // Creates a game result indicating whether the game is finished and whether the title should be hidden early
       // For this game the game should end early if the player has won (if victory returns true)
       // The title is not hidden early (false is passed), so the title disappears at the default time
