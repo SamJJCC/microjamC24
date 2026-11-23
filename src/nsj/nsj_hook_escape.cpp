@@ -2,6 +2,7 @@
 #include "mj/mj_game_list.h"
 #include "nsj_Enemy.h"
 #include "nsj_boundingBox.h"
+#include "bn_regular_bg_items_nsj_background.h"
 
 namespace
 {
@@ -20,7 +21,8 @@ MJ_GAME_LIST_ADD_SFX_CREDITS(sfx_credits)
 namespace nsj
 {
    nsj_hook_escape::nsj_hook_escape([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data &data) : mj::game("nsj"),
-                                                                                                                        _player({0, 0}, 2)
+                                                                                                                        _player({0, 0}, 2),
+                                                                                                                        _background(bn::regular_bg_items::nsj_background.create_bg(0, 0))
 
    {
       mj::difficulty_level difficulty =

@@ -6,7 +6,6 @@
 #include "nsj_player.h"
 #include "nsj_Enemy.h"
 #include "nsj_Shark.h"
-
 namespace nsj
 {
     class nsj_hook_escape : public mj::game
@@ -76,8 +75,10 @@ namespace nsj
         bool _hooked = false;
         static constexpr int MAX_SHARKS = 2;
         bn::vector<Shark,MAX_SHARKS>_sharks;
+        bn::regular_bg_ptr _background;
         bn::fixed _recommended_hook_speed(mj::difficulty_level difficulty);
         bn::fixed _recommended_shark_speed(mj::difficulty_level difficulty);
+    
        
     };
 };
