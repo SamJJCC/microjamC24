@@ -8,10 +8,6 @@
 // All game functions/classes/variables/constants scoped to the namespace
 namespace nsj
 {
-
-    /**
-     * A character controlled with the d-pad.
-     */
     class player
     {
         // The bounds of the screen
@@ -22,7 +18,6 @@ namespace nsj
         static constexpr bn::fixed _speed = 2;
 
     public:
-     bn::rect bounding_box;
         /**
          * player constructor
          *
@@ -43,19 +38,16 @@ namespace nsj
          */
         bool out_of_bounds() const;
 
-        bn::sprite_ptr get_sprite();
+        bn::fixed_point get_position();
+        bn::rect get_bounding_box();
 
     private:
         // The sprite to display the player
         bn::sprite_ptr _sprite;
-        bn::sprite_animate_action<4> _sprite_action;
-
-        // The pixels/frame the player moves in each dimension
+        bn::sprite_animate_action<2> _sprite_action;
+        bn::size _size;
         bn::fixed _speed;
-
-        /**
-         * Reads from the d-pad and moves the player by one frame accordingly.
-         */
+        bn::rect _bounding_box;
         void _update_position();
     };
 

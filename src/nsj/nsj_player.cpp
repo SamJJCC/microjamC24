@@ -9,6 +9,11 @@
 
 namespace nsj
 {
+    static constexpr bn::size PLAYER_SIZE = {8, 8};
+    constexpr int SIDE_FRAME = 0;
+    constexpr int UP_FRAME = 2;
+    constexpr int DOWN_FRAME = 3;
+    constexpr int SWIM_SPEED = 10;
 
     /**
      * player constructor
@@ -17,19 +22,32 @@ namespace nsj
      * @param speed the pixels/frame the player moves at in each dimension
      */
     player::player(bn::fixed_point starting_position, bn::fixed speed) : _sprite(bn::sprite_items::nsj_fish.create_sprite(starting_position)),
-                                                                         _sprite_action(bn::create_sprite_animate_action_forever(_sprite, 16, bn::sprite_items::nsj_fish.tiles_item(), 0, 1, 2, 3)),
+                                                                        _sprite_action(bn::create_sprite_animate_action_forever(_sprite, SWIM_SPEED,  bn::sprite_items::nsj_fish.tiles_item(),
+    SIDE_FRAME, 1)),
+                                                                         _size(PLAYER_SIZE),
                                                                          _speed(speed)
     {
-        bounding_box = create_bounding_box(_sprite, {16, 16});
+        _bounding_box = create_bounding_box(_sprite, _size);
     }
+
+    bn::rect nsj::player::get_bounding_box()
+    {
+        return _bounding_box;
+    }
+
     void player::update()
     {
         _update_position();
+       
+    if (!bn::keypad::up_held() && !bn::keypad::down_held())
+    {
+        _sprite_action.update();
+    }
     }
 
-    bn::sprite_ptr nsj::player::get_sprite()
+    bn::fixed_point nsj::player::get_position()
     {
-        return _sprite;
+        return _sprite.position();
     }
 
     /**
@@ -41,19 +59,23 @@ namespace nsj
         {
             _sprite.set_x(_sprite.x() - _speed);
             _sprite.set_horizontal_flip(false);
+            _sprite.set_tiles(bn::sprite_items::nsj_fish.tiles_item(),SIDE_FRAME);
         }
         if (bn::keypad::right_held())
         {
             _sprite.set_x(_sprite.x() + _speed);
             _sprite.set_horizontal_flip(true);
+            _sprite.set_tiles(bn::sprite_items::nsj_fish.tiles_item(), SIDE_FRAME);
         }
         if (bn::keypad::up_held())
         {
             _sprite.set_y(_sprite.y() - _speed);
+            _sprite.set_tiles(bn::sprite_items::nsj_fish.tiles_item(),UP_FRAME);
         }
         if (bn::keypad::down_held())
         {
             _sprite.set_y(_sprite.y() + _speed);
+            _sprite.set_tiles(bn::sprite_items::nsj_fish.tiles_item(),DOWN_FRAME);
         }
         if (_sprite.x() > MAX_X)
         {
@@ -72,7 +94,7 @@ namespace nsj
         {
             _sprite.set_y(MAX_Y);
         }
-        bounding_box = create_bounding_box(_sprite, {16, 16});
+        _bounding_box = create_bounding_box(_sprite, _size);
     }
 
 }
