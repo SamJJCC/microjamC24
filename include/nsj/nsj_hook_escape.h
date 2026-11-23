@@ -70,7 +70,7 @@ namespace nsj
     private:
         // The character that the player can move
         player _player;
-        static constexpr int MAX_ENEMIES = 2;
+        static constexpr int MAX_ENEMIES = 4;
         bn::vector<nsj::Enemy, MAX_ENEMIES> _enemies;
         bool _hooked = false;
         static constexpr int MAX_SHARKS = 2;

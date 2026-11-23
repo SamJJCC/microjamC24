@@ -30,8 +30,9 @@ namespace nsj
 
       bn::fixed speed = _recommended_hook_speed(recommended_difficulty_level(completed_games, data));
 
-      _enemies.push_back(Enemy(30, -30, speed, data.random));
-      _enemies.push_back(Enemy(-100, 30, speed + 0.5, data.random));
+      _enemies.push_back(Enemy(30, -30, -speed, speed, data.random));
+      _enemies.push_back(Enemy(-100, 40, speed + 0.5, -speed, data.random));
+      _enemies.push_back(Enemy(100, -40, speed, speed, data.random));
       if (difficulty == mj::difficulty_level::NORMAL ||
           difficulty == mj::difficulty_level::HARD)
       {
@@ -49,7 +50,7 @@ namespace nsj
    {
       if (difficulty == mj::difficulty_level::EASY)
       {
-         return .60;
+         return .50;
       }
       else if (difficulty == mj::difficulty_level::NORMAL)
       {
@@ -64,7 +65,7 @@ namespace nsj
       {
          return .50;
       }
-      if (difficulty == mj::difficulty_level::NORMAL)
+      else if (difficulty == mj::difficulty_level::NORMAL)
       {
          return .75;
       }
