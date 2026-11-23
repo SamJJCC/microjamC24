@@ -21,11 +21,9 @@ namespace nsj
 {
    nsj_hook_escape::nsj_hook_escape([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data &data) : mj::game("nsj"),
                                                                                                                         _player({0, 0}, 2),
-                                                                                                                        _enemies(),
-                                                                                                                        _Shark(-20,30,0.5)
-
+                                                                                                                        _Shark(-80, -40, _recommended_shark_speed(recommended_difficulty_level(completed_games, data)))
    {
-      bn::fixed speed = _recommended_diver_speed(recommended_difficulty_level(completed_games, data));
+      bn::fixed speed = _recommended_hook_speed(recommended_difficulty_level(completed_games, data));
 
       _enemies.push_back(Enemy(30, -30, speed, data.random));
       _enemies.push_back(Enemy(-100, 30, speed + 0.5, data.random));
@@ -36,14 +34,7 @@ namespace nsj
       return "Don't Get Caught";
    }
 
-   bn::fixed nsj_hook_escape:: _recommended_enemies_on_screen(mj::difficulty_level difficulty)
-   {
-      if(difficulty == mj::difficulty_level:: EASY){
-        Enemy(30, -30, _recommended_diver_speed, rng;
-      }
-   }
-
-   bn::fixed nsj_hook_escape::_recommended_diver_speed(mj::difficulty_level difficulty)
+   bn::fixed nsj_hook_escape::_recommended_hook_speed(mj::difficulty_level difficulty)
    {
       if (difficulty == mj::difficulty_level::EASY)
       {
@@ -62,7 +53,7 @@ namespace nsj
       {
          return .50;
       }
-      if (difficulty == mj::difficulty_level::NORMAL)
+      else if (difficulty == mj::difficulty_level::NORMAL)
       {
          return .75;
       }

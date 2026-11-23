@@ -15,7 +15,7 @@ namespace nsj
         static constexpr int MIN_X = -bn::display::width() / 2;
         static constexpr int MAX_Y = bn::display::height() / 2;
         static constexpr int MIN_Y = -bn::display::height() / 2;
-        //static constexpr bn::fixed _speed = 2;
+        static constexpr bn::fixed _speed = 2;
 
     public:
         /**
