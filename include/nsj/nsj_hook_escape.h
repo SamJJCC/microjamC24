@@ -73,14 +73,10 @@ namespace nsj
         player _player;
         static constexpr int MAX_ENEMIES = 2;
         bn::vector<nsj::Enemy, MAX_ENEMIES> _enemies;
-        //Enemy _diver;
         bool _hooked = false;
         Shark _Shark;
         bn::fixed _recommended_diver_speed(mj::difficulty_level difficulty);
         bn::fixed _recommended_shark_speed(mj::difficulty_level difficulty);
-        void level1 (mj::difficulty_level difficulty);
-        void level2 (mj::difficulty_level difficulty);
-        void level3 (mj::difficulty_level difficulty);
-
+        bn::fixed _recommended_enemies_on_screen(mj::difficulty_level difficulty);
     };
 };

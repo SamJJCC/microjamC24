@@ -22,12 +22,10 @@ namespace nsj
    nsj_hook_escape::nsj_hook_escape([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data &data) : mj::game("nsj"),
                                                                                                                         _player({0, 0}, 2),
                                                                                                                         _enemies(),
-                                                                                                                        //_diver(30, -30, _recommended_diver_speed(recommended_difficulty_level(completed_games, data)), data.random),
-                                                                                                                        _Shark(-20,30,_recommended_shark_speed(recommended_difficulty_level(completed_games,data)))
+                                                                                                                        _Shark(-20,30,0.5)
 
    {
       bn::fixed speed = _recommended_diver_speed(recommended_difficulty_level(completed_games, data));
-      
 
       _enemies.push_back(Enemy(30, -30, speed, data.random));
       _enemies.push_back(Enemy(-100, 30, speed + 0.5, data.random));
@@ -37,57 +35,19 @@ namespace nsj
    {
       return "Don't Get Caught";
    }
-   
 
-  void nsj_hook_escape:: level1(mj::difficulty_level difficulty)
+   bn::fixed nsj_hook_escape:: _recommended_enemies_on_screen(mj::difficulty_level difficulty)
    {
-      if(difficulty== mj::difficulty_level::EASY){
-         _player.update();
-                  for (int i = 0; i < _enemies.size(); i++)
-                  {
-                     _enemies[i].update();
-
-                     if (_enemies[i].get_bounding_box().intersects(_player.get_bounding_box()))
-                     {
-                        _hooked = true;
-                     }
-                  }
-               }
+      if(difficulty == mj::difficulty_level:: EASY){
+        Enemy(30, -30, _recommended_diver_speed, rng;
+      }
    }
-
-
-   void nsj_hook_escape:: level2(mj::difficulty_level difficulty)
-   {
-      
-        if(difficulty== mj::difficulty_level::NORMAL){
-            _player.update();
-            for (int i = 0; i < _enemies.size(); i++)
-            {
-               _enemies[i].update();
-
-               if (_enemies[i].get_bounding_box().intersects(_player.get_bounding_box()))
-               {
-                  _hooked = true;
-               }
-            }
-            _Shark.update(_player);
-
-            if (
-               _Shark.get_bounding_box().intersects(_player.get_bounding_box()))
-            {
-               _hooked = true;
-            }
-        }
-   
-   }
-      
-   
 
    bn::fixed nsj_hook_escape::_recommended_diver_speed(mj::difficulty_level difficulty)
    {
       if (difficulty == mj::difficulty_level::EASY)
       {
-         return .60;
+         return .50;
       }
       else if (difficulty == mj::difficulty_level::NORMAL)
       {
@@ -116,12 +76,6 @@ namespace nsj
 
    mj::game_result nsj_hook_escape::play([[maybe_unused]] const mj::game_data &data)
    {
-      
-      /*if the level is 1 then create only one enemy and use intersects logic for only one*/
-      /*if the level is 2 or more then use the for loop to loop through vectors and use 
-      intersects logic */
-      /*else use level 2 logic and shark logic together*/
-      /*if(level_enemy == 1){
       _player.update();
       for (int i = 0; i < _enemies.size(); i++)
       {
@@ -139,10 +93,7 @@ namespace nsj
       {
          _hooked = true;
       }
-   }*/
 
-       
-      level1(mj::difficulty_level::EASY);
       // Creates a game result indicating whether the game is finished and whether the title should be hidden early
       // For this game the game should end early if the player has won (if victory returns true)
       // The title is not hidden early (false is passed), so the title disappears at the default time
